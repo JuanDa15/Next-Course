@@ -1,0 +1,30 @@
+{
+  "name": "next-course",
+  "version": "1.0.0",
+  "description": "Next js course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanDa15/Next-Course.git"
+  },
+  "keywords": [
+    "Next.js",
+    "js",
+    "React"
+  ],
+  "author": "Juan David <jdoo1115@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanDa15/Next-Course/issues"
+  },
+  "homepage": "https://github.com/JuanDa15/Next-Course#readme",
+  "devDependencies": {
+    "standard": "17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
