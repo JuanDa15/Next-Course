@@ -8,6 +8,10 @@ docker compose up -d
 ```
 
 2. Prisma commands
+  - Install dependencies
+  ```
+    npm i -E
+  ```
 
   - Init prisma
   ```
