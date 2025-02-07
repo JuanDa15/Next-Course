@@ -1,8 +1,6 @@
-import { DeleteBtn } from '@/components/DeleteButton';
 import { DeleteCompletedTodos } from '@/components/DeleteCompletedTodos';
 import { TodoForm } from '@/components/TodoForm';
 import { ToDoGrid } from '@/components/TodoGrid';
-import { deleteCompletedTodos } from '@/helpers/todos';
 import prisma from '@/lib/prisma';
 import { Metadata } from 'next';
 
