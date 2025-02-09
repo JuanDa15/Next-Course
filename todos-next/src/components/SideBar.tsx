@@ -1,6 +1,11 @@
+import { SideBarLogOut } from './LogOut';
 import { SideBarItem } from './SideBarItem';
 
 const items = [
+  {
+    href: '/dashboard',
+    text: 'Home',
+  },
   {
     href: '/rest',
     text: 'Rest TODOS',
@@ -25,6 +30,7 @@ export const Sidebar = () => {
       {items.map((item) => (
         <SideBarItem key={item.href} {...item} />
       ))}
+      <SideBarLogOut />
     </ul>
   );
 };
