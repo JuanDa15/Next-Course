@@ -12,5 +12,6 @@ export const DeleteCompletedTodos = () => {
       router.refresh();
     });
   };
+
   return <DeleteBtn text='Delete Completed' onClick={onClick} />;
 };

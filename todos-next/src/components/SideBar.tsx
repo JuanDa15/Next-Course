@@ -9,11 +9,19 @@ const items = [
     href: '/server-actions',
     text: 'Server Actions Todos',
   },
+  {
+    href: '/cookies',
+    text: 'Cookies',
+  },
+  {
+    href: '/products',
+    text: 'Products',
+  },
 ];
 
 export const Sidebar = () => {
   return (
-    <ul className='min-w-[200px] bg-zinc-900 flex flex-col'>
+    <ul className='min-w-[200px] bg-neutral-600 flex flex-col'>
       {items.map((item) => (
         <SideBarItem key={item.href} {...item} />
       ))}
