@@ -1,3 +1,4 @@
+import { auth } from '@/auth/auth';
 import { SideBarLogOut } from './LogOut';
 import { SideBarItem } from './SideBarItem';
 
@@ -22,15 +23,20 @@ const items = [
     href: '/products',
     text: 'Products',
   },
+  {
+    href: '/profile',
+    text: 'Profile',
+  },
 ];
 
-export const Sidebar = () => {
+export const Sidebar = async () => {
+  const session = await auth();
   return (
     <ul className='min-w-[200px] bg-neutral-600 flex flex-col'>
       {items.map((item) => (
         <SideBarItem key={item.href} {...item} />
       ))}
-      <SideBarLogOut />
+      {session && <SideBarLogOut />}
     </ul>
   );
 };

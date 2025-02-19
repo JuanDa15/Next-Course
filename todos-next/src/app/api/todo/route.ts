@@ -1,3 +1,4 @@
+import { auth } from "@/auth/auth";
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { boolean, object, string } from "yup";
@@ -32,13 +33,21 @@ const postSchema = object({
 });
 export async function POST(request: NextRequest) {
   const body = await request.json();
+  const session = await auth()
+
+  if (!session) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     const validatedBody = await postSchema.validate(body, { abortEarly: false, stripUnknown: true });
 
     try {
       const todo = await prisma.todo.create({
-        data: validatedBody
+        data: {
+          ...validatedBody,
+          userId: session!.user!.id as string
+        }
       });
 
       return NextResponse.json({

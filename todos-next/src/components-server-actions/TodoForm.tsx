@@ -1,6 +1,7 @@
 'use client';
 
 import { createTodoAction } from '@/actions/todo-actions';
+import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FormEvent } from 'react';
 
@@ -13,7 +14,8 @@ export const TodoForm = () => {
       new FormData(e.currentTarget).entries()
     ) as { description: string; title: string };
 
-    await createTodoAction(value);
+    const session = await getSession();
+    await createTodoAction({ ...value, userId: session?.user?.id as string });
     (e.target as HTMLFormElement).reset();
     router.refresh();
   };

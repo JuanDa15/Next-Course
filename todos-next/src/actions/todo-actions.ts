@@ -51,15 +51,16 @@ export const deleteTodoAction = async (id: string) => {
 const postSchema = object({
   title: string().required('Title is required'),
   description: string().required('Description is required'),
-  done: boolean().optional().default(false)
+  done: boolean().optional().default(false),
+  userId: string().required('User is required')
 });
-export const createTodoAction = async (body: { title: string, description: string }) => {
+export const createTodoAction = async (body: { title: string, description: string, userId: string }) => {
   try {
     const validatedBody = await postSchema.validate(body, { abortEarly: false, stripUnknown: true });
 
     try {
       const todo = await prisma.todo.create({
-        data: validatedBody
+        data: { ...validatedBody }
       });
       revalidatePath('/server-actions')
       return todo
@@ -71,10 +72,13 @@ export const createTodoAction = async (body: { title: string, description: strin
   }
 }
 
-export const deleteCompletedTodos = async () => {
+export const deleteCompletedTodos = async (id: string) => {
+
+
   await prisma.todo.deleteMany({
     where: {
-      done: true
+      done: true,
+      userId: id
     }
   });
   revalidatePath('/server-actions')
